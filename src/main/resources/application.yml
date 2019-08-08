@@ -1,0 +1,9 @@
+app.version: @project.version@
+app.api.path: /api/v1
+#spring.liquibase.enabled: false
+#spring.data.rest.default-page-size: 1000
+spring.data.rest.basePath: /api/v1
+#spring.jackson.default-property-inclusion: non_null
+#spring.jpa.properties.javax.persistence.validation.mode: none
+# spring.data.rest.defaultMediaType: application/json
+spring.liquibase.change-log: classpath:/defaultDatabase-local.xml
