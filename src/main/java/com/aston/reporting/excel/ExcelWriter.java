@@ -53,23 +53,91 @@ public class ExcelWriter {
         String firstNameChar = statusReport.getFirstName().substring(0, 1).toUpperCase();
         String lastNameChar = statusReport.getLastName().substring(0, 1).toUpperCase();
         Sheet sheet = wb.createSheet(firstNameChar + lastNameChar + " Details");
-        sheet.autoSizeColumn(1);
-        sheet.setColumnWidth(0, 20000);
+        // sheet.autoSizeColumn(1);
+        sheet.setColumnWidth(3, 20000);
 
+        // create headers
+        addHeaders(sheet, wb, creationHelper);
+
+        for (int i = 0; i < statusReport.getProjectList().size(); i++) {
+            addProject(statusReport.getProjectList().get(i), i+1, sheet, wb, creationHelper);
+        }
+
+
+        return sheet;
+    }
+
+    private void addHeaders(Sheet sheet, Workbook wb, CreationHelper creationHelper) {
         Row row = sheet.createRow((short) 0);
-        row.setHeight((short) (4*sheet.getDefaultRowHeight()));
 
         CellStyle cs = wb.createCellStyle();
         cs.setWrapText(true);
-        Cell cell = row.createCell(0);
-
+        Cell cell = row.createCell(1);
         cell.setCellStyle(cs);
-        String bulletList = createBulletList(statusReport.getProjectList().get(0));
-        cell.setCellValue(creationHelper.createRichTextString(bulletList));
-        Cell cell2 = row.createCell(1);
+        cell.setCellValue("Project Name");
+
+        // set Project allocation
+        Cell cell2 = row.createCell(2);
+        cs.setWrapText(true);
         cell2.setCellStyle(cs);
-        cell2.setCellValue("dd");
-        return sheet;
+        cell2.setCellValue("Allocation");
+
+        // set Project status/comment
+        Cell cell3 = row.createCell(3);
+        cs.setWrapText(true);
+        cell3.setCellStyle(cs);
+        cell3.setCellValue("Status / Comments");
+
+        // set total project hours
+        Cell cell4 = row.createCell(4);
+        cs.setWrapText(true);
+        cell4.setCellStyle(cs);
+        cell4.setCellValue("Total Project Hours");
+
+        // set allocation
+        Cell cell5 = row.createCell(5);
+        cs.setWrapText(true);
+        cell5.setCellStyle(cs);
+        cell5.setCellValue("Allocation");
+
+        // set status/ comment
+        Cell cell6 = row.createCell(6);
+        cs.setWrapText(true);
+        cell6.setCellStyle(cs);
+        cell6.setCellValue("Status / Comments");
+
+        // set expected hours
+        Cell cell7 = row.createCell(7);
+        cs.setWrapText(true);
+        cell7.setCellStyle(cs);
+        cell7.setCellValue("Expected Project Hours");
+
+    }
+
+    private void addProject(Project project, int rowIndex, Sheet sheet, Workbook wb, CreationHelper creationHelper) {
+        Row row = sheet.createRow((short) rowIndex);
+        row.setHeight((short) (4*sheet.getDefaultRowHeight()));
+
+        // set Project Name
+        CellStyle cs = wb.createCellStyle();
+        cs.setWrapText(true);
+        Cell cell = row.createCell(1);
+        cell.setCellStyle(cs);
+        System.out.println(project.getProjectName());
+        cell.setCellValue(project.getProjectName());
+
+        // set Project allocation
+        Cell cell2 = row.createCell(2);
+        cs.setWrapText(true);
+        cell2.setCellStyle(cs);
+        cell2.setCellValue("50%");
+
+        // set Project status/comment
+        Cell cell3 = row.createCell(3);
+        cs.setWrapText(true);
+        cell3.setCellStyle(cs);
+        String bulletList = createBulletList(project);
+        cell3.setCellValue(creationHelper.createRichTextString(bulletList));
     }
 
     private String createBulletList(Project project) {

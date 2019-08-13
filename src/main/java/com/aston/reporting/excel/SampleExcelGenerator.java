@@ -31,6 +31,7 @@ public class SampleExcelGenerator {
 
     static Project generateProject(String projectName) {
         Project project = new Project();
+        project.setProjectName(projectName);
 
 
         List<Status> statusList = new ArrayList<>();
