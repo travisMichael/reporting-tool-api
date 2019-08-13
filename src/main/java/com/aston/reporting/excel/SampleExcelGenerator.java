@@ -3,10 +3,6 @@ package com.aston.reporting.excel;
 import com.aston.reporting.entity.Status;
 import com.aston.reporting.entity.StatusReport;
 import com.aston.reporting.entity.SubStatus;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +31,8 @@ public class SampleExcelGenerator {
     static StatusReport generateStatusReport(String fName, String lName) {
 
         StatusReport statusReport1 = new StatusReport();
-        statusReport1.setFirstName("Travis");
-        statusReport1.setLastName("Latzke");
+        statusReport1.setFirstName(fName);
+        statusReport1.setLastName(lName);
 
         List<Status> statusList = new ArrayList<>();
         statusList.add(generateStatus("status 1"));
@@ -51,6 +47,7 @@ public class SampleExcelGenerator {
     static List<StatusReport> generateSampleStatusReports() {
         List<StatusReport> statusReportList = new ArrayList<>();
         statusReportList.add(generateStatusReport("Travis", "Latzke"));
+        statusReportList.add(generateStatusReport("Anne", "Coleman"));
         return statusReportList;
     }
 

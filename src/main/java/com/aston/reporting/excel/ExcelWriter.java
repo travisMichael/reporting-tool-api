@@ -52,16 +52,20 @@ public class ExcelWriter {
         String firstNameChar = statusReport.getFirstName().substring(0, 1).toUpperCase();
         String lastNameChar = statusReport.getLastName().substring(0, 1).toUpperCase();
         Sheet sheet = wb.createSheet(firstNameChar + lastNameChar + " Details");
+        sheet.autoSizeColumn(1);
+        sheet.setColumnWidth(0, 20000);
 
         Row row = sheet.createRow((short) 0);
-        row.setHeight((short) (2*sheet.getDefaultRowHeight()));
+        row.setHeight((short) (4*sheet.getDefaultRowHeight()));
 
         CellStyle cs = wb.createCellStyle();
         cs.setWrapText(true);
         Cell cell = row.createCell(0);
+
         cell.setCellStyle(cs);
 //        cell.setCellValue(creationHelper.createRichTextString("\u2022This is \n     \u2022a string"));
-        cell.setCellValue(creationHelper.createRichTextString(createBulletList(statusReport)));
+        String bulletList = createBulletList(statusReport);
+        cell.setCellValue(creationHelper.createRichTextString(bulletList));
         Cell cell2 = row.createCell(1);
         cell2.setCellStyle(cs);
         cell2.setCellValue("dd");
@@ -84,7 +88,7 @@ public class ExcelWriter {
             builder.append("\u2022 ");
             builder.append(status.getDescription());
             builder.append("\n");
-            if (status.getSubStatusList() != null && status.getSubStatusList().size() == 0) {
+            if (status.getSubStatusList() != null && status.getSubStatusList().size() > 0) {
                 for (int j = 0; j < status.getSubStatusList().size(); j ++) {
                     SubStatus subStatus = status.getSubStatusList().get(j);
                     if (StringUtils.isNullOrEmpty(subStatus.getDescription())) {
