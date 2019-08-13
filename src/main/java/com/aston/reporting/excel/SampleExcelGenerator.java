@@ -1,5 +1,6 @@
 package com.aston.reporting.excel;
 
+import com.aston.reporting.entity.Project;
 import com.aston.reporting.entity.Status;
 import com.aston.reporting.entity.StatusReport;
 import com.aston.reporting.entity.SubStatus;
@@ -28,19 +29,33 @@ public class SampleExcelGenerator {
         return status;
     }
 
-    static StatusReport generateStatusReport(String fName, String lName) {
+    static Project generateProject(String projectName) {
+        Project project = new Project();
 
-        StatusReport statusReport1 = new StatusReport();
-        statusReport1.setFirstName(fName);
-        statusReport1.setLastName(lName);
 
         List<Status> statusList = new ArrayList<>();
         statusList.add(generateStatus("status 1"));
         statusList.add(generateStatus("status 2"));
 
-        statusReport1.setStatusList(statusList);
+        project.setStatusList(statusList);
 
-        return statusReport1;
+        return project;
+
+    }
+
+    static StatusReport generateStatusReport(String fName, String lName) {
+
+        StatusReport statusReport = new StatusReport();
+        statusReport.setFirstName(fName);
+        statusReport.setLastName(lName);
+
+        List<Project> projectList = new ArrayList<>();
+        projectList.add(generateProject("project 1"));
+        projectList.add(generateProject("project 2"));
+
+        statusReport.setProjectList(projectList);
+
+        return statusReport;
 
     }
 

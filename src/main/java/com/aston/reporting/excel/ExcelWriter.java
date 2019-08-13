@@ -1,5 +1,6 @@
 package com.aston.reporting.excel;
 
+import com.aston.reporting.entity.Project;
 import com.aston.reporting.entity.Status;
 import com.aston.reporting.entity.StatusReport;
 import com.aston.reporting.entity.SubStatus;
@@ -63,8 +64,7 @@ public class ExcelWriter {
         Cell cell = row.createCell(0);
 
         cell.setCellStyle(cs);
-//        cell.setCellValue(creationHelper.createRichTextString("\u2022This is \n     \u2022a string"));
-        String bulletList = createBulletList(statusReport);
+        String bulletList = createBulletList(statusReport.getProjectList().get(0));
         cell.setCellValue(creationHelper.createRichTextString(bulletList));
         Cell cell2 = row.createCell(1);
         cell2.setCellStyle(cs);
@@ -72,16 +72,16 @@ public class ExcelWriter {
         return sheet;
     }
 
-    private String createBulletList(StatusReport statusReport) {
+    private String createBulletList(Project project) {
 
-        if (statusReport.getStatusList() == null || statusReport.getStatusList().size() == 0) {
+        if (project.getStatusList() == null || project.getStatusList().size() == 0) {
             return "";
         }
 
         StringBuilder builder = new StringBuilder();
 
-        for (int i = 0; i < statusReport.getStatusList().size(); i++) {
-            Status status = statusReport.getStatusList().get(i);
+        for (int i = 0; i < project.getStatusList().size(); i++) {
+            Status status = project.getStatusList().get(i);
             if (StringUtils.isNullOrEmpty(status.getDescription())) {
                 continue;
             }

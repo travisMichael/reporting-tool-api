@@ -15,8 +15,7 @@ public class StatusReport {
 
     private String firstName;
     private String LastName;
-    private String description;
-    private List<Status> statusList;
+    private List<Project> projectList;
 
     public long getId() {
         return id;
@@ -42,20 +41,12 @@ public class StatusReport {
         LastName = lastName;
     }
 
-    public String getDescription() {
-        return description;
+    public List<Project> getProjectList() {
+        return projectList;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Status> getStatusList() {
-        return statusList;
-    }
-
-    public void setStatusList(List<Status> statusList) {
-        this.statusList = statusList;
+    public void setProjectList(List<Project> projectList) {
+        this.projectList = projectList;
     }
 
     public String getFullName() {
