@@ -1,6 +1,7 @@
 package com.aston.reporting.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,12 +11,11 @@ public class StatusReport {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany
-    private List<Project> projectList;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Project> projectList = new ArrayList<>();
 
     private String firstName;
     private String LastName;
-
 
     public long getId() {
         return id;
@@ -46,7 +46,8 @@ public class StatusReport {
     }
 
     public void setProjectList(List<Project> projectList) {
-        this.projectList = projectList;
+        this.projectList.clear();
+        this.projectList.addAll(projectList);
     }
 
     public String getFullName() {

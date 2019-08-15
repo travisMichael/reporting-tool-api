@@ -2,6 +2,8 @@ package com.aston.reporting.configuration;
 
 
 import com.aston.reporting.entity.StatusReport;
+import com.aston.reporting.handler.StatusReportEventHandler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
@@ -21,10 +23,10 @@ public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
         );
     }
 
-//    @Bean
-//    NotificationEventHandler notificationEventHandler() {
-//        return new NotificationEventHandler();
-//    }
+    @Bean
+    StatusReportEventHandler statusReportEventHandler() {
+        return new StatusReportEventHandler();
+    }
 
 
 }

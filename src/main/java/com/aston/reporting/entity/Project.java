@@ -1,5 +1,7 @@
 package com.aston.reporting.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,10 @@ public class Project {
 
     @OneToMany
     List<Status> statusList;
+//
+//    @ManyToOne
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    private StatusReport statusReport;
 
     String projectName;
     Integer allocation;
@@ -47,4 +53,12 @@ public class Project {
     public void setStatusList(List<Status> statusList) {
         this.statusList = statusList;
     }
+//
+//    public StatusReport getStatusReport() {
+//        return statusReport;
+//    }
+//
+//    public void setStatusReport(StatusReport statusReport) {
+//        this.statusReport = statusReport;
+//    }
 }
