@@ -1,12 +1,28 @@
 package com.aston.reporting.entity;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Project {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @OneToMany
+    List<Status> statusList;
 
     String projectName;
     Integer allocation;
-    List<Status> statusList;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getProjectName() {
         return projectName;

@@ -23,6 +23,9 @@ public class DetailsSheetHelper {
             addProject(statusReport.getProjectList().get(i), i+1, sheet, workbook, creationHelper);
         }
 
+        addLeave(sheet, workbook, 3);
+        addTotal(sheet, workbook, 4);
+
     }
 
     private static void addHeaders(Sheet sheet, Workbook wb, CreationHelper creationHelper) {
@@ -72,97 +75,32 @@ public class DetailsSheetHelper {
 
     }
 
-    private static void addLeave(Sheet sheet, Workbook wb, CreationHelper creationHelper) {
-        Row row = sheet.createRow((short) 0);
+    private static void addLeave(Sheet sheet, Workbook wb, int index) {
+        Row row = sheet.createRow((short) index);
 
         CellStyle cs = wb.createCellStyle();
         cs.setWrapText(true);
         Cell cell = row.createCell(1);
         cell.setCellStyle(cs);
-        cell.setCellValue("Project Name");
+        cell.setCellValue("Planned Time Off / Holidays");
 
-        // set Project allocation
-        Cell cell2 = row.createCell(2);
-        cs.setWrapText(true);
-        cell2.setCellStyle(cs);
-        cell2.setCellValue("Allocation");
-
-        // set Project status/comment
-        Cell cell3 = row.createCell(3);
-        cs.setWrapText(true);
-        cell3.setCellStyle(cs);
-        cell3.setCellValue("Status / Comments");
-
-        // set total project hours
-        Cell cell4 = row.createCell(4);
-        cs.setWrapText(true);
-        cell4.setCellStyle(cs);
-        cell4.setCellValue("Total Project Hours");
-
-        // set allocation
-        Cell cell5 = row.createCell(5);
-        cs.setWrapText(true);
-        cell5.setCellStyle(cs);
-        cell5.setCellValue("Allocation");
-
-        // set status/ comment
-        Cell cell6 = row.createCell(6);
-        cs.setWrapText(true);
-        cell6.setCellStyle(cs);
-        cell6.setCellValue("Status / Comments");
-
-        // set expected hours
-        Cell cell7 = row.createCell(7);
-        cs.setWrapText(true);
-        cell7.setCellStyle(cs);
-        cell7.setCellValue("Expected Project Hours");
 
     }
 
-    private static void addTotal(Sheet sheet, Workbook wb, CreationHelper creationHelper) {
-        Row row = sheet.createRow((short) 0);
+    private static void addTotal(Sheet sheet, Workbook wb, int index) {
+        Row row = sheet.createRow((short) index);
 
         CellStyle cs = wb.createCellStyle();
         cs.setWrapText(true);
         Cell cell = row.createCell(1);
         cell.setCellStyle(cs);
-        cell.setCellValue("Project Name");
+        cell.setCellValue("Total");
 
         // set Project allocation
         Cell cell2 = row.createCell(2);
         cs.setWrapText(true);
         cell2.setCellStyle(cs);
-        cell2.setCellValue("Allocation");
-
-        // set Project status/comment
-        Cell cell3 = row.createCell(3);
-        cs.setWrapText(true);
-        cell3.setCellStyle(cs);
-        cell3.setCellValue("Status / Comments");
-
-        // set total project hours
-        Cell cell4 = row.createCell(4);
-        cs.setWrapText(true);
-        cell4.setCellStyle(cs);
-        cell4.setCellValue("Total Project Hours");
-
-        // set allocation
-        Cell cell5 = row.createCell(5);
-        cs.setWrapText(true);
-        cell5.setCellStyle(cs);
-        cell5.setCellValue("Allocation");
-
-        // set status/ comment
-        Cell cell6 = row.createCell(6);
-        cs.setWrapText(true);
-        cell6.setCellStyle(cs);
-        cell6.setCellValue("Status / Comments");
-
-        // set expected hours
-        Cell cell7 = row.createCell(7);
-        cs.setWrapText(true);
-        cell7.setCellStyle(cs);
-        cell7.setCellValue("Expected Project Hours");
+        cell2.setCellValue("100%");
 
     }
 
