@@ -1,6 +1,7 @@
 package com.aston.reporting.configuration;
 
 
+import com.aston.reporting.entity.Project;
 import com.aston.reporting.entity.StatusReport;
 import com.aston.reporting.handler.StatusReportEventHandler;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,8 @@ public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.exposeIdsFor(
-                StatusReport.class
+                StatusReport.class,
+                Project.class
         );
     }
 
