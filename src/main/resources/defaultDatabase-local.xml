@@ -4,5 +4,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
+    <changeSet id="aa" author="TLatzke">
+        <insert  tableName="project">
+            <column name="projectName" value="Kohle's"/>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>
