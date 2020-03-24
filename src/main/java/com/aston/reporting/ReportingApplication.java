@@ -14,4 +14,5 @@ public class ReportingApplication extends SpringBootServletInitializer {
         application.setAdditionalProfiles("local");
         application.run(args);
     }
+    // change
 }
