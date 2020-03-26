@@ -11,7 +11,7 @@
 
     <artifactId>reporting-tool</artifactId>
     <packaging>war</packaging>
-    <version>1.9.1-SNAPSHOT</version>
+    <version>1.10.3-SNAPSHOT</version>
 
 
     <properties>
@@ -201,7 +201,7 @@
                         <releaseBranchPrefix>release/</releaseBranchPrefix>
                         <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
                         <supportBranchPrefix>support/</supportBranchPrefix>
-                        <versionTagPrefix></versionTagPrefix>
+                        <versionTagPrefix />
                         <origin>origin</origin>
                     </gitFlowConfig>
                 </configuration>
